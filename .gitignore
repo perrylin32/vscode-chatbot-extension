@@ -1,0 +1,34 @@
+# Dependency directories
+node_modules/
+out/
+dist/
+
+# VSCode settings and test data
+.vscode/
+.vscode-test/
+
+# Build artifacts
+*.vsix
+
+# Python-specific ignores
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+*.env
+.env.*
+
+# Logs and debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Miscellaneous
+.idea/          # JetBrains IDEs
+*.swp           # Vim swap files
