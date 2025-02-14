@@ -1,66 +1,75 @@
-Here’s an updated and polished version of your `README.md` file for the **LeetCode Chatbot** extension. It includes all the relevant sections, clear descriptions, and placeholders for images or animations.
+# VS Code Chatbot Extension
 
----
-
-# LeetCode Chatbot README
-
-The **LeetCode Chatbot** is a VS Code extension designed to assist you with solving LeetCode problems directly within your editor. It provides intelligent suggestions, analyzes your code, and helps you improve your problem-solving skills without leaving VS Code.
-
-![LeetCode Chatbot in Action](images/extension-demo.gif)  
-*Example: The chatbot analyzing code and providing suggestions.*
-
----
+A helpful VS Code extension that provides AI-powered coding assistance directly within your editor. The chatbot helps with both LeetCode problems and general coding questions, leveraging multiple AI models for comprehensive support.
 
 ## Features
 
-1. **Code Analysis and Suggestions**  
-   Get actionable feedback on your current code. The chatbot identifies potential issues and suggests improvements to optimize your solution.
+1. **Multi-Model AI Support**
+   - Support for multiple AI models:
+     - DeepSeek Coder (6.7B)
+     - DeepSeek R1
+     - OpenAI GPT-4
+     - Custom LLM options
 
-   ![Code Suggestions](images/code-suggestions.png)
+2. **Dual-Mode Operation**
+   - LeetCode Mode: Specialized assistance for solving LeetCode problems
+   - General Coding Mode: Broader programming support and code analysis
 
-2. **Integration with Local AI Models**  
-   The extension works seamlessly with local AI models (e.g., Ollama's DeepSeek) to provide real-time assistance.
+3. **Smart Code Analysis**
+   - Code analysis and explanations on request
+   - Human-readable responses with automatically formatted code examples
+   - Contextual understanding of your current file
 
-3. **Lightweight and Easy to Use**  
-   No need for external tools or cloud APIs—everything runs locally for privacy and efficiency.
+4. **Interactive Chat Interface**
+   - Clean, VS Code-native design
+   - Conversation history management
+   - Code block highlighting with copy functionality
+   - Markdown support for better readability
 
-4. **Customizable Prompts**  
-   Tailor the chatbot's behavior to focus on debugging, optimization, or explanation.
+5. **Secure API Key Management**
+   - Secure storage of OpenAI API keys
+   - Easy key management through VS Code's secure storage
 
-> Tip: Check out the [demo animation](images/extension-demo.gif) to see how the extension works in action!
+## Installation
 
----
+### VS Code Marketplace
+1. Open VS Code
+2. Go to the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X`)
+3. Search for "LeetCode Chatbot"
+4. Click Install
+5. Or visit the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=kebinLin.leetcode-chatbot)
 
-## Requirements
+### Requirements
 
-To use this extension, ensure you have the following installed:
-
-1. **VS Code**  
-   Download and install [Visual Studio Code](https://code.visualstudio.com/).
-
-2. **Ollama**  
-   Install [Ollama](https://ollama.ai/) and pull the required model (e.g., `deepseek-r1:latest`):
+1. **Python Dependencies**
    ```bash
-   ollama pull deepseek-r1:latest
+   pip install Flask==3.1.0 Flask-Cors==5.0.0 requests==2.32.3 black==25.1.0 openai==1.63.0 typing-extensions==4.12.2
    ```
 
-3. **Python Backend**  
-   The extension communicates with a Flask backend that interacts with Ollama. Ensure you have Python and Flask installed:
-   ```bash
-   pip install flask requests
-   ```
+2. **Ollama** (Required for DeepSeek models)
+   - Install [Ollama](https://ollama.ai/)
+   - Pull the required models:
+     ```bash
+     ollama pull deepseek-coder:6.7b
+     ollama pull deepseek-r1
+     ```
 
----
+### Backend Setup
+
+Start the Flask backend:
+```bash
+python app.py
+```
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
-- `leetcode-chatbot.model`: Specify the AI model to use (default: `deepseek-r1:latest`).
-- `leetcode-chatbot.backendUrl`: URL of the Flask backend (default: `http://localhost:5000`).
-- `leetcode-chatbot.enableDebugLogs`: Enable debug logging for troubleshooting (default: `false`).
+- `leetcode-chatbot.model`: Select the AI model (default: `deepseek-coder:6.7b`)
+- `leetcode-chatbot.backendUrl`: Backend URL (default: `http://localhost:5000`)
+- `leetcode-chatbot.enableDebugLogs`: Enable debugging (default: `false`)
 
-You can configure these settings in your VS Code `settings.json` file:
+Example configuration in `settings.json`:
 ```json
 {
   "leetcode-chatbot.model": "deepseek-coder:6.7b",
@@ -69,65 +78,72 @@ You can configure these settings in your VS Code `settings.json` file:
 }
 ```
 
----
+## Usage
+
+1. Open the chatbot panel using:
+   - Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`)
+   - Search for "LeetCode Chatbot"
+   - Or click the lightbulb icon in the status bar
+
+2. Select your preferred mode:
+   - Toggle between "General Coding" and "LeetCode Help"
+   - Choose your AI model from the dropdown
+
+3. Start chatting:
+   - Ask questions about your code
+   - Get help with LeetCode problems
+   - Receive explanations and examples
+
+## Features in Detail
+
+### Chat Interface
+- Code block syntax highlighting
+- Copy-to-clipboard functionality
+- Conversation history management
+- New chat creation
+- Automatically formatted code examples in responses
+
+### Model Selection
+- Easy switching between AI models
+- Secure API key management for OpenAI
+- Support for custom LLM configurations
 
 ## Known Issues
 
-- **Performance**: Large files or complex prompts may take longer to process.
-- **Model Compatibility**: Some models may not support specific coding tasks. Experiment with different models if needed.
-- **Local Setup**: Ensure Ollama and the Flask backend are running before using the extension.
+- The backend server must be running for the extension to work
+- Large files may experience slight processing delays
+- OpenAI models require a valid API key
+- Deepseek R1 may take a while to produce a response
 
-If you encounter any other issues, please report them on the [GitHub repository](https://github.com/your-repo/leetcode-chatbot/issues).
+## License
 
----
+[MIT License](LICENSE)
 
 ## Release Notes
 
-### 1.0.0 (Initial Release)
-- Added basic functionality for code analysis and suggestions.
-- Integrated with Ollama for local AI model support.
-
-### 1.0.1
-- Fixed bugs related to backend communication.
-- Improved error handling and logging.
+### 1.0.0
+- Initial release
+- Basic chat functionality
+- Support for DeepSeek models
 
 ### 1.1.0
-- Added support for multiple AI models.
-- Introduced customizable settings for model selection and backend URL.
+- Added OpenAI GPT-4 support
+- Implemented secure API key storage
+- Added mode switching (LeetCode/General)
+
+### 1.2.0
+- Enhanced response formatting
+- Improved chat interface
+- Added conversation history management
 
 ---
 
-## Following Extension Guidelines
+## Support
 
-Ensure that you've read through the official [VS Code Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines) to maintain best practices for creating and maintaining your extension.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows/Linux).
-- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows/Linux).
-- Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+For issues, feature requests, or contributions, please visit the [GitHub repository](https://github.com/perrylin32/vscode-chatbot-extension).
 
 ---
 
-## For More Information
+**Enjoy coding with LeetCode Chatbot!** 🚀
 
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
----
-
-**Enjoy using the LeetCode Chatbot!**  
-If you find this extension helpful, consider giving it a ⭐️ on GitHub or sharing it with others. Contributions and feedback are always welcome!
-
----
-
-### Notes for You:
-1. Replace `images/extension-demo.gif`, `images/code-suggestions.png`, and other image paths with actual screenshots or animations of your extension in action.
-2. Update the links to your GitHub repository or other resources as needed.
-3. If you plan to publish the extension, include the marketplace link in the README.
-
-Let me know if you'd like help with creating animations or further refining the README! 😊
+Remember to star ⭐ the repository if you find it helpful!
