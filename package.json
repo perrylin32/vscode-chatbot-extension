@@ -33,8 +33,24 @@
       {
           "command": "leetcode-chatbot.updateApiKey",
           "title": "LeetCode Chatbot: Update API Key"
+      },
+      {
+          "command": "leetcode-chatbot.updateGroqApiKey",
+          "title": "LeetCode Chatbot: Update Groq API Key"
+      },
+      {
+          "command": "leetcode-chatbot.setCustomModel",
+          "title": "LeetCode Chatbot: Set Custom Model"
+      },
+      {
+          "command": "leetcode-chatbot.setOllamaModel",
+          "title": "LeetCode Chatbot: Set Ollama Model"
+      },
+      {
+          "command": "leetcode-chatbot.logCurrentModel",
+          "title": "LeetCode Chatbot: Prints Current Model"
       }
-    ],
+      ],
     "viewsContainers": {
       "activitybar": [
         {
